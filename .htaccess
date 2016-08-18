@@ -1,0 +1,38 @@
+addDefaultCharset UTF-8
+
+DirectoryIndex /core/index.php
+
+RemoveHandler .html .htm
+AddType application/x-httpd-php .php .htm .html .phtml
+
+
+ErrorDocument 401 /401.html
+ErrorDocument 403 /403.html
+ErrorDocument 404 /404.html
+ErrorDocument 500 /500.html
+
+
+RewriteEngine On
+RewriteBase /
+RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+
+RewriteRule /view/images/(.*) /view/images/$1 [L,QSA]  
+RewriteRule /view/css/(.*) /view/css/$1 [L,QSA]
+RewriteRule /view/js/(.*) /view/js/$1 [L,QSA]
+
+
+RewriteRule ^([a-zA-Z0-9_\-]+)$ /$1/  [R,L]
+RewriteRule ^([a-zA-Z0-9_\-]+)/$ ?lang=$1 [L,QSA]
+
+RewriteCond %{THE_REQUEST} !\.php(\?.|\ .)
+RewriteRule ^([a-zA-Z0-9_\-]+)/([a-zA-Z0-9_\-]+)$ /$1/$2/ [R,L]
+RewriteRule ^([a-zA-Z0-9_\-]+)/([a-zA-Z0-9_\-]+)/$ ?lang=$1&app=$2 [L,QSA]
+RewriteRule ^([a-zA-Z0-9_\-]+)/([a-zA-Z0-9_\-]+)$ ?lang=$1&app=$2 [L,QSA]
+
+
+RewriteRule ^([a-zA-Z0-9_\-]+)/([a-zA-Z0-9_\-]+)$ /$1/$2/$3 [R,L]
+RewriteRule ^([a-zA-Z0-9_\-]+)/([a-zA-Z0-9_\-]+)/([a-zA-Z0-9_\-]+)/$ ?lang=$1&app=$2&post=$3 [L,QSA]
+RewriteRule ^([a-zA-Z0-9_\-]+)/([a-zA-Z0-9_\-]+)/([a-zA-Z0-9_\-]+)$ ?lang=$1&app=$2&post=$3 [L,QSA]
+
