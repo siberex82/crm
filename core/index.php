@@ -1,11 +1,26 @@
 ﻿<?php
 
 /*
-/ @Initialisation system? include files
+/
+/@ Author: tropic.r@gmail.com
+/@ Special for UA ITlab 2016 
+/@ Index point 
+/
 */
-require_once realpath(dirname(__DIR__))."/init/start.php";
 
-$initSystem->init();
+try {
+  require_once realpath(dirname(__DIR__))."/init/start.php";
+  
+  $initSystem->init();
+  
+} 
+catch(Exception $e) {
+  
+  echo $e->getMessage();
+  	
+}
+
+
 
 
 ?>
