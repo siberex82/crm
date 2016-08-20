@@ -1,5 +1,5 @@
-﻿<?php
-
+<?php
+ob_start();
 /*
 /
 /@ Author: tropic.r@gmail.com
@@ -9,11 +9,17 @@
 */
 
 try {
-  require_once realpath(dirname(__DIR__))."/init/start.php";
+  $start = realpath(dirname(__DIR__))."/init/start.php";
+  
+  if(file_exists($start)) {
+    require_once $start;
   
   $initSystem->init();
-  
+  } else {
+	throw new Exception("Fatal Error! {$start} not found");  
+	  }
 } 
+
 catch(Exception $e) {
   
   echo $e->getMessage();
