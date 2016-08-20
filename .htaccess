@@ -18,10 +18,10 @@ RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
 RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
 
 
-RewriteRule /view/images/(.*) /view/images/$1 [L,QSA]  
-RewriteRule /view/css/(.*) /view/css/$1 [L,QSA]
-RewriteRule /view/js/(.*) /view/js/$1 [L,QSA]
-
+RewriteRule /app/include/images/(.*) /app/include/images/$1 [L,QSA]  
+RewriteRule /app/includes/css/(.*) /app/includes/css/$1 [L,QSA]
+RewriteRule /view/includes/js/(.*) /view/includes/js/$1 [L,QSA]
+RewriteRule /view/includes/fonts/(.*) /view/includes/fonts/$1 [L,QSA]
 
 RewriteRule ^([a-zA-Z0-9_\-]+)$ /$1/  [R,L]
 RewriteRule ^([a-zA-Z0-9_\-]+)/$ ?lang=$1 [L,QSA]

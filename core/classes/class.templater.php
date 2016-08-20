@@ -34,7 +34,14 @@ class Templater implements IntTemplater {
 	
 	
 	function replace() {
+	   
 	   $this->content = str_replace("{title}","Мой сайт",$this->content);
+	   
+	   $this->content = str_replace("/css/", "http://".$_SERVER['HTTP_HOST'].SEPARATOR."app".SEPARATOR."includes/css/",$this->content);
+	   
+	   $this->content = str_replace("/images/", "http://".$_SERVER['HTTP_HOST'].SEPARATOR."app".SEPARATOR."includes/images/",$this->content);
+	   
+	   $this->content = str_replace("/js/", "http://".$_SERVER['HTTP_HOST'].SEPARATOR."app".SEPARATOR."includes/js/",$this->content);
 	   
 	   return $this;
 	}
