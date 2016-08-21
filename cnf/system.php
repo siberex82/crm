@@ -14,4 +14,5 @@ define(SEPARATOR,"/");
 
 define(ROOT,$_SERVER['DOCUMENT_ROOT']);
 
+define(HOST,"http://".$_SERVER['HTTP_HOST']);
 ?>

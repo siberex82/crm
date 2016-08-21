@@ -19,6 +19,9 @@ class Templater implements IntTemplater {
 	
 	
 	
+	
+	//---------------------------------- get mask from document
+	
 	function getContent($template) {
 		
 		$PathGetContent = ROOT.SEPARATOR."app".SEPARATOR."templates".SEPARATOR.$template.".tpl";
@@ -40,25 +43,48 @@ class Templater implements IntTemplater {
 	
 	
 	
+	
+	//---------------------------------- parser for mask 
+	function parserMask() {
+		
+	}//end function parserMask
+	
+	
+	
+	
+	
+	
+	
+	
+	//---------------------------------- replace mask in document
+	
 	function replace() {
 	   
-	   $this->content = str_replace("{title}","Мой сайт",$this->content);
+	   $this->content = str_replace("{title}","FUSION",$this->content);
 	   
-	   $this->content = str_replace("/css/", "http://".$_SERVER['HTTP_HOST'].SEPARATOR."app".SEPARATOR."includes/css/",$this->content);
+	   $this->content = str_replace("/css/", HOST.SEPARATOR."app".SEPARATOR."includes/css/",$this->content);
 	   
-	   $this->content = str_replace("/images/", "http://".$_SERVER['HTTP_HOST'].SEPARATOR."app".SEPARATOR."includes/images/",$this->content);
+	   $this->content = str_replace("/images/",  HOST.SEPARATOR."app".SEPARATOR."includes/images/",$this->content);
 	   
-	   $this->content = str_replace("/js/", "http://".$_SERVER['HTTP_HOST'].SEPARATOR."app".SEPARATOR."includes/js/",$this->content);
+	   $this->content = str_replace("/js/",  HOST.SEPARATOR."app".SEPARATOR."includes/js/",$this->content);
 	   
 	   preg_match_all("|{(.*)}|", $this->content, $out, PREG_PATTERN_ORDER);
+
 	   
-	   foreach($out as $key=>$mask){
-	     foreach($mask as $key=>$mask2){
-	      var_dump($mask2);
-	     }
+	   foreach($out[1] as $key=>$mask){
+	
+	       $maskArray = explode(",",$mask); 
+		   
+		   $typeMask = $maskArray[0];
+		   $galleryCount = $maskArray[1];
+		   $titleMask =  $maskArray[2];
+		   $nameMask = $maskArray[3];
+		   $idMask = $maskArray[4];
+	     
 	   }
 	   
-	   $this->content = str_replace("{gallery,4,Название блока, Название поля}","",$this->content);
+	   $this->content = str_replace($out[0],"",$this->content);
+
 	   
 	   return $this;
 	}
@@ -68,9 +94,19 @@ class Templater implements IntTemplater {
 	
 	
 	
+	
+	
+	
+	
+	//---------------------------------- take in document
 	function view() {
 	   echo $this->content;
 	}//end function view
+	
+	
+	
+	
+	
 	
 	
 	
