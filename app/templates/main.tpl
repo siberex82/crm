@@ -1,9 +1,5 @@
 <!DOCTYPE HTML>
-<!--
-	Overflow by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+
 <html>
 	<head>
 		<title>{title}</title>
@@ -16,13 +12,9 @@
 		<!--[if lte IE 8]><link rel="stylesheet" href="/css/ie8.css" /><![endif]-->
 	</head>
 	<body>
-
-		{gallery,4,Название блока, Название поля, 32}
         
-        {gallery,20,Название блока, Название поля,33}
+        {content}
         
-        {string,Название блока, Название пол,34}
-
 		<!-- Scripts -->
 			<script src="/js/jquery.min.js"></script>
 			<script src="/js/jquery.scrolly.min.js"></script>

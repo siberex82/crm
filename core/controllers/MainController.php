@@ -15,8 +15,12 @@ class MainController {
 	static function main() {
 	    
 		$Templater = new Templater();
+		$Superquery = new Superquery;
 		
-	    $Templater->getContent("main")->replace()->view();
+		
+	    $Templater->getContent("homepage")->replace()->view();
+
+		$Superquery->getCustom("SELECT * FROM fus_admins")->getArray();
 	   
 	}
 	

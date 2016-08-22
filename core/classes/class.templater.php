@@ -24,16 +24,28 @@ class Templater implements IntTemplater {
 	
 	function getContent($template) {
 		
+		$MainGetContent = ROOT.SEPARATOR."app".SEPARATOR."templates".SEPARATOR."main.tpl";
+		
 		$PathGetContent = ROOT.SEPARATOR."app".SEPARATOR."templates".SEPARATOR.$template.".tpl";
+		
+		if(file_exists($MainGetContent)) {
+		
+		$this->content = $MainGetContent = file_get_contents($MainGetContent);
 		
 		if(file_exists($PathGetContent)) {
 		
-		$this->content = $TemplateContent = file_get_contents($PathGetContent);
+		  $PathGetContent = file_get_contents($PathGetContent);
+		  
+		  $this->content = str_replace("{content}", $PathGetContent, $MainGetContent);
+		
+		} else {
+		  throw new Exception("Template {$template} not found!");	
+		}
 		
 		return $this;
 		
 		} else {
-		 throw new Exception("Template {$template} not found");
+		 throw new Exception("Template main not found");
 			}	
 			
 	}//end function getContent
@@ -67,6 +79,8 @@ class Templater implements IntTemplater {
 	   $this->content = str_replace("/images/",  HOST.SEPARATOR."app".SEPARATOR."includes/images/",$this->content);
 	   
 	   $this->content = str_replace("/js/",  HOST.SEPARATOR."app".SEPARATOR."includes/js/",$this->content);
+	   
+	   $this->content = str_replace("/fonts/",  HOST.SEPARATOR."app".SEPARATOR."includes/fonts/",$this->content);
 	   
 	   preg_match_all("|{(.*)}|", $this->content, $out, PREG_PATTERN_ORDER);
 

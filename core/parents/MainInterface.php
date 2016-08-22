@@ -19,4 +19,13 @@ interface IntRedirect {
 interface IntTemplater {
    function getContent($data);
 }
+
+interface IntSuperquery {
+   function table($data);
+   function getCustom($data);
+   function getAssoc();
+   function getArray();
+   function getTable();
+}
+
 ?>
