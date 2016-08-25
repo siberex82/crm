@@ -26,7 +26,4 @@ catch(Exception $e) {
   	
 }
 
-
-
-
 ?>

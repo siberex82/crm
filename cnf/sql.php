@@ -40,11 +40,6 @@ class Connect  {
 	 
 	 
 	 
-     function close() {
-		 
-		 mysqli_close($this->connect);
-		 
-     }
    
 
 }//end class

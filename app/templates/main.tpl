@@ -1,28 +1,12 @@
 <!DOCTYPE HTML>
-
 <html>
 	<head>
 		<title>{title}</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="/css/main.css" />
-        <link rel="stylesheet" href="/css/font-awesome.min.css" />
-        
-		<!--[if lte IE 8]><link rel="stylesheet" href="/css/ie8.css" /><![endif]-->
 	</head>
 	<body>
-        
-        {content}
-        
-		<!-- Scripts -->
-			<script src="/js/jquery.min.js"></script>
-			<script src="/js/jquery.scrolly.min.js"></script>
-			<script src="/js/jquery.poptrox.min.js"></script>
-			<script src="/js/skel.min.js"></script>
-			<script src="/js/util.js"></script>
-			<!--[if lte IE 8]><script src="/js/ie/respond.min.js"></script><![endif]-->
-			<script src="/js/main.js"></script>
-
+       {content}
 	</body>
 </html>
