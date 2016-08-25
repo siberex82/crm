@@ -18,6 +18,60 @@ class Templater implements IntTemplater {
 	
 	
 	
+	function getCoreContent($template) {
+		$CorePathTemplates = ROOT.SEPARATOR."core".SEPARATOR."templates";
+		
+		if(file_exists($CorePathTemplates.SEPARATOR.$template.".tpl")) {
+		   $this->content = file_get_contents($CorePathTemplates.SEPARATOR.$template.".tpl");
+		} else {
+		
+		   throw new Exception("Error ! Template {$template} not found");	
+		
+		}
+		
+		return $this;
+	}
+	
+	
+	
+	
+	
+	
+	function Corereplace() {
+	   
+	   $this->content = str_replace("{title}","FUSION",$this->content);
+	   
+	   $this->content = str_replace("css/", HOST.SEPARATOR."core".SEPARATOR."templates/css/",$this->content);
+	   
+	   $this->content = str_replace("images/",  HOST.SEPARATOR."core".SEPARATOR."templates/images/",$this->content);
+	   
+	   $this->content = str_replace("js/",  HOST.SEPARATOR."core".SEPARATOR."templates/js/",$this->content);
+	   
+	   $this->content = str_replace("fonts/",  HOST.SEPARATOR."core".SEPARATOR."templates/fonts/",$this->content);
+	   
+	   preg_match_all("|{(.*)}|", $this->content, $out, PREG_PATTERN_ORDER);
+
+	   
+	   foreach($out[1] as $key=>$mask){
+	
+	       $maskArray = explode(",",$mask); 
+		   
+		   $typeMask = $maskArray[0];
+		   $galleryCount = $maskArray[1];
+		   $titleMask =  $maskArray[2];
+		   $nameMask = $maskArray[3];
+		   $idMask = $maskArray[4];
+	     
+	   }
+	   
+	   $this->content = str_replace($out[0],"",$this->content);
+
+	   
+	   return $this;
+	}
+	
+	
+	
 	
 	
 	//---------------------------------- get mask from document

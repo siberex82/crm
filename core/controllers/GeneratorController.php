@@ -16,8 +16,7 @@ class GeneratorController {
 		$Templater = new Templater();
 		$Superquery = new Superquery;
 		
-		echo "generator";
-	    //$Templater->getContent("homepage")->replace()->view();
+	    $Templater->getCoreContent("auth_generator")->Corereplace()->view();
 
 		//$Superquery->getCustom("SELECT * FROM fus_admins")->getArray();
 	   

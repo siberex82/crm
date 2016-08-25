@@ -1,0 +1,15 @@
+*, html, body {
+	margin:0;
+	padding:0;
+	outline:none;
+	background:#CCC;
+	}
+ul {
+	list-style:none;
+	}
+a:hover {
+	text-decoration:none;
+	}
+a, button, input[type=submit] {
+	cursor:pointer;
+	}

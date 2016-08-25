@@ -17,6 +17,7 @@ interface IntRedirect {
 }
 
 interface IntTemplater {
+   function getCoreContent($template);
    function getContent($data);
 }
 
