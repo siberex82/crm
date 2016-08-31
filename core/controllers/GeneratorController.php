@@ -26,9 +26,6 @@ class GeneratorController {
 		
 	    $Templater->getCoreContent("auth_generator")->CoreReplace()->view();
         
-		if(isset($_POST['auth_start'])) {
-		   echo "asdsad";
-		}
 		//$Superquery->getCustom("SELECT * FROM fus_admins")->getArray();
 	   
 	}

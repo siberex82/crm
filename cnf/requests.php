@@ -1,4 +1,4 @@
-<?
+<?php
 /*
 /*
 /@ Author: tropic.r@gmail.com
@@ -8,4 +8,18 @@
 /@ Params:  
 /* 
 */
+
+$access_post = array(
+
+
+    "auth_start"=>NULL,
+	
+	"auth_name"=>NULL,
+	
+	"auth_pass"=>NULL,
+	
+	"token"=>NULL
+	
+);
+
 ?>

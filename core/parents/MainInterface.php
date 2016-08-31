@@ -33,4 +33,7 @@ interface IntAjax {
    static function query($path,$data,$type);
 }
 
+interface IntCatcher {
+   static function send($request);
+}
 ?>

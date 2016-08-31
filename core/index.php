@@ -15,9 +15,12 @@ try {
   $start = realpath(dirname(__DIR__))."/init/start.php";
   
   if(file_exists($start)) {
-    require_once $start;
+    require_once $start;	
+	
+    $initSystem->init();
   
-  $initSystem->init();
+    Catcher::send($_REQUEST);
+  
   } else {
 	throw new Exception("Fatal Error! {$start} not found");  
 	  }
@@ -28,5 +31,7 @@ catch(Exception $e) {
   echo $e->getMessage();
   	
 }
+
+
 
 ?>

@@ -15,4 +15,6 @@ define(SEPARATOR,"/");
 define(ROOT,$_SERVER['DOCUMENT_ROOT']);
 
 define(HOST,"http://".$_SERVER['HTTP_HOST']);
+
+$TOKEN = $_SESSION['token'] = md5(uniqid(mt_rand(),true));
 ?>

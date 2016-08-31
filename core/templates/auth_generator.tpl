@@ -10,7 +10,7 @@
 
     <center><img class="fusion_logo" src="images/logo.png" alt=""/></center>
     <div id="login">
-        <form action="javascript:void(0);" method="POST">
+        <form action="" method="POST">
             <fieldset class="clearfix">
               <p>
               <span class="fontawesome-user">
@@ -28,6 +28,9 @@
               
               <input name="auth_pass" type="password"  value="" placeholder="*******" required>
               </p> 
+              
+              <input type="hidden" name="token" value="{token}"/>
+              
               
               <p><input type="submit" name="auth_start" value="ВОЙТИ"></p>
             </fieldset>
