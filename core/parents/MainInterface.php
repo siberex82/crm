@@ -29,4 +29,8 @@ interface IntSuperquery {
    function getTable();
 }
 
+interface IntAjax {
+   static function query($path,$data,$type);
+}
+
 ?>

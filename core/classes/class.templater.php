@@ -37,7 +37,7 @@ class Templater implements IntTemplater {
 	
 	
 	
-	function Corereplace() {
+	function CoreReplace() {
 	   
 	   $this->content = str_replace("{title}","FUSION",$this->content);
 	   

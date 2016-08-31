@@ -24,15 +24,15 @@ RewriteRule /view/includes/js/(.*) /view/includes/js/$1 [L,QSA]
 RewriteRule /view/includes/fonts/(.*) /view/includes/fonts/$1 [L,QSA]
 
 RewriteRule ^([a-zA-Z0-9_\-]+)$ /$1/  [R,L]
-RewriteRule ^([a-zA-Z0-9_\-]+)/$ ?lang=$1 [L,QSA]
+RewriteRule ^([a-zA-Z0-9_\-]+)/$ ?route=$1 [L,QSA]
 
 RewriteCond %{THE_REQUEST} !\.php(\?.|\ .)
 RewriteRule ^([a-zA-Z0-9_\-]+)/([a-zA-Z0-9_\-]+)$ /$1/$2/ [R,L]
-RewriteRule ^([a-zA-Z0-9_\-]+)/([a-zA-Z0-9_\-]+)/$ ?lang=$1&app=$2 [L,QSA]
-RewriteRule ^([a-zA-Z0-9_\-]+)/([a-zA-Z0-9_\-]+)$ ?lang=$1&app=$2 [L,QSA]
+RewriteRule ^([a-zA-Z0-9_\-]+)/([a-zA-Z0-9_\-]+)/$ ?route=$1&act=$2 [L,QSA]
+
 
 
 RewriteRule ^([a-zA-Z0-9_\-]+)/([a-zA-Z0-9_\-]+)$ /$1/$2/$3 [R,L]
-RewriteRule ^([a-zA-Z0-9_\-]+)/([a-zA-Z0-9_\-]+)/([a-zA-Z0-9_\-]+)/$ ?lang=$1&app=$2&post=$3 [L,QSA]
-RewriteRule ^([a-zA-Z0-9_\-]+)/([a-zA-Z0-9_\-]+)/([a-zA-Z0-9_\-]+)$ ?lang=$1&app=$2&post=$3 [L,QSA]
+RewriteRule ^([a-zA-Z0-9_\-]+)/([a-zA-Z0-9_\-]+)/([a-zA-Z0-9_\-]+)/$ ?route=$1&act=$2&post=$3 [L,QSA]
+
 

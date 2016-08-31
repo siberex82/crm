@@ -34,14 +34,18 @@ class Router implements IntRouter {
 				 
 				 if(isset($_GET['act'])) {
 					 if($act = $Inspector->ClearString(trim($_GET['act']))) {
-					 
-						 $class::$act();
+
+						    $class::$act();
 						 
 					 }else{
 					    //Redirect::url("404.html");
 					 }//end if act valid
 					 
-				 }//end if isset act
+				 }else {
+				  
+				  	     $class::_construct();
+						 	 
+				 }
 				 
 			  }else {
 				 
