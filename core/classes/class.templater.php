@@ -49,6 +49,9 @@ class Templater implements IntTemplater {
 	   
 	   $this->content = str_replace("fonts/",  HOST.SEPARATOR."core".SEPARATOR."templates/fonts/",$this->content);
 	   
+	   $this->content = str_replace("{message}",  $_SESSION['error_message'],$this->content);
+	   
+	   
 	   preg_match_all("|{(.*)}|", $this->content, $out, PREG_PATTERN_ORDER);
 
 	   

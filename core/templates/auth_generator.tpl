@@ -29,13 +29,13 @@
               <input name="auth_pass" type="password"  value="" placeholder="*******" required>
               </p> 
               
-              <input type="hidden" name="token" value="{token}"/>
+              <input type="hidden" name="token" value=""/>
               
               
               <p><input type="submit" name="auth_start" value="ВОЙТИ"></p>
             </fieldset>
         </form>
-        
+        <center><div class="error">{message}</div></center>
     </div>
     
     <div class="CoreCopy">Author <a href="mailto:tropic.r@gmail.com">tropic</a> &copy; 2016</div>

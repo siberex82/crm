@@ -190,3 +190,11 @@ p {
 .CoreCopy a {
 	color:#D44179;
 }
+.error {
+	background:none;
+	color:red;
+	text-align:center;
+	min-height:0px;
+	max-width:280px;
+	font-size:20px;
+}

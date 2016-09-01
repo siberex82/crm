@@ -36,4 +36,10 @@ interface IntAjax {
 interface IntCatcher {
    static function send($request);
 }
+
+interface IntUserCheck {
+   function authentication();
+   function singin_generator();
+   function return_request();
+}
 ?>

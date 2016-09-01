@@ -1,4 +1,6 @@
-<div class="block"> </div>
+<div class="block">
+
+ </div>
      
         
         {gallery,4,Название блока, Название поля, id32, категория админки}

@@ -11,35 +11,58 @@
 
 class GeneratorController {
 	
+	
+	
+	
 	static function _construct() {
-		
-	   if( !$_COOKIE['auth']  &&  $_COOKIE['role'] != "root" ){
-		   self::auth();
-		} 
+
+		   self::auth();	 
 		
 	}
+	
+	
+	
+	
 	
 	static function auth() {
-	    
-		$Templater = new Templater();
-		$Superquery = new Superquery;
+	    //unset($_SESSION);
 		
-	    $Templater->getCoreContent("auth_generator")->CoreReplace()->view();
+		$Templater = new Templater();
+		$Superquery = new Superquery();
         
+        if($_SESSION['auth'] == false){
+			$Templater->getCoreContent("auth_generator")->CoreReplace()->view();
+		} 
+		if($_SESSION['auth'] == true) {
+		    $Templater->getCoreContent("page_generator")->CoreReplace()->view();
+		}
 		//$Superquery->getCustom("SELECT * FROM fus_admins")->getArray();
-	   
+	    
+			
+			  
 	}
 	
+	
+	
+	
+	function logout() {
+	   unset($_SESSION['auth']);
+	   Redirect::url("generator/auth/");
+	}
 	
 	
 	
     static function view() {
 		
-	    if( !$_COOKIE['auth']  &&  $_COOKIE['role'] != "root" ){
+	    if($_SESSION['auth'] == false){
 		   self::auth();
 		} 
 		
     }
+	
+	
+	
+	
 	
 }//end class
 ?>
