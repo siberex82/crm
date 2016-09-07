@@ -18,7 +18,15 @@ $access_post = array(
 	
 	"auth_pass"=>NULL,
 	
-	"token"=>NULL
+	"token"=>NULL,
+	
+	"inputControllerName"=>NULL,
+	
+	"inputControllerMethodName"=>NULL,
+	
+	"inputActionMethodName"=>NULL,
+	
+	"generatorformsubmit"=>NULL
 	
 );
 

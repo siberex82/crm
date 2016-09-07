@@ -34,7 +34,7 @@ class GeneratorController {
 			$Templater->getCoreContent("auth_generator")->CoreReplace()->view();
 		} 
 		if($_SESSION['auth'] == true) {
-		    $Templater->getCoreContent("page_generator")->CoreReplace()->view();
+			Redirect::url("generator/view/");
 		}
 		//$Superquery->getCustom("SELECT * FROM fus_admins")->getArray();
 	    
@@ -53,10 +53,17 @@ class GeneratorController {
 	
 	
     static function view() {
+		$Templater = new Templater();
+		$Superquery = new Superquery();
+		
 		
 	    if($_SESSION['auth'] == false){
 		   self::auth();
-		} 
+		}
+		
+		if($_SESSION['auth'] == true){
+		   $Templater->getCoreContent("page_generator")->CoreReplace()->view();
+		}
 		
     }
 	
