@@ -21,68 +21,13 @@ class Generation implements IntGeneration {
 	   
 	   
 	   
-	   $this->generationControllerContent = "<?php
-/*
-/@ Author: tropic.r@gmail.com
-/@ Special for UA ITlab 2016 
-/@ Class: {$this->inputControllerName}
-/@ Target: controller page
-/@ Method:
-/@ Params:   
-*/
-		
-class  {$this->inputControllerName}Controller {
-		    
-	static function _construct() {
-		self::view();
-	}
-	
-	static function view() {
-	   include_once ROOT.SEPARATOR.'core/actions/{$this->inputControllerName}Action.php';
-	   echo 'page';
-	}
-			
-} 
-		
-		
-?>";
+	   include ROOT.SEPARATOR."core/templates/mask_controller.php";
 
      
+	   include ROOT.SEPARATOR."core/templates/mask_action.php";
 	 
 	 
-	 
-	 
-	 $this->generationActionContent = "<?php
-/*
-/@ Author: tropic.r@gmail.com
-/@ Special for UA ITlab 2016 
-/@ Class: {$this->inputControllerName}
-/@ Target: action page
-/@ Method:
-/@ Params:   
-*/
-		
-class  {$this->inputControllerName}Action {
-		    
-	static function _construct() {
-		self::view();
-	}
-	
-	
-	
-	static function view() {
-	  
-	}
-			
-} // end class
-		
-		
-?>";
 
-
-
-
-	   
 	   $createPathContr = ROOT.SEPARATOR."core/controllers/".$this->inputControllerName."Controller.php";
 	   
 	   
@@ -90,16 +35,16 @@ class  {$this->inputControllerName}Action {
 	   
 	   
 	   if(!file_exists($createPathContr)) {
-		   $docOpen = fopen($createPathContr,"w");
-		   fwrite($docOpen, $this->generationControllerContent);
-		   fclose($docOpen);
+		   $docOpenContr = fopen($createPathContr,"w");
+		   fwrite($docOpenContr, $this->generationControllerContent);
+		   fclose($docOpenContr);
 	   }
 	   
 	   
 	   if(!file_exists($createPathAct)) {
-		   $docOpen = fopen($createPathAct,"w");
-		   fwrite($docOpen, $this->generationActionContent);
-		   fclose($docOpen);
+		   $docOpenAct = fopen($createPathAct,"w");
+		   fwrite($docOpenAct, $this->generationActionContent);
+		   fclose($docOpenAct);
 	   }
 	   
   } //end generate()
