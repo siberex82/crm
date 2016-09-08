@@ -15,9 +15,12 @@ class UserCheck implements IntUserCheck {
    protected $pass;
    protected $token;
    
+  
+   
    function __construct($array) {
        $this->array = $array;
 	   $this->singin_generator();
+	   $this->generation();
    }
    
    	
@@ -54,6 +57,13 @@ class UserCheck implements IntUserCheck {
    }
    
    
+   
+   function generation() {
+	  $request = $this->array;
+	   
+      $Generation = new Generation();
+	  $Generation->generate($request);   
+   } // end generation()
    
    
    function return_request() {

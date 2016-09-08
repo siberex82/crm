@@ -46,7 +46,7 @@
             <div class="generator-info">
                <i class="fa fa-info-circle fa-2x generator-info-circle"></i>
                <p>
-                 Будут сгенерированы: контроллер и экшен с классами соответствующими именам своих файлов, с базовыми методами __construct().</p><p> Для генерации дополнительных функций 2 и 3 поля не должны быть пустыми. 
+                 Будут сгенерированы: контроллер и экшен с классами соответствующими именам своих файлов, с базовыми методами __construct().</p><p> Для генерации дополнительных функций нужно задать имена методов в 2 и 3 полях. 
                </p>
             </div>
          </div>
@@ -68,7 +68,7 @@
                   <div class="generator-content">
                          <form method="post" action="">
                           <div class="form-group">
-                            <label for="inputControllerName">Название файлов ExampleController.php и ExampleAction.php:</label>
+                            <label for="inputControllerName">Имя класса, контроллера, экшена</label>
                             <input type="text" class="form-control" id="inputControllerName" name="inputControllerName" required placeholder="Пример: cart">
                           </div>
                           
@@ -96,7 +96,7 @@
                   </div>
               </div>
           </div>
-          
+
       </div>
    </div>
 </div>

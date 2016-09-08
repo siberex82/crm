@@ -42,4 +42,10 @@ interface IntUserCheck {
    function singin_generator();
    function return_request();
 }
+
+interface IntGeneration {
+   function generate($request);
+}
+
+
 ?>

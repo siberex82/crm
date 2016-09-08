@@ -52,6 +52,8 @@ class GeneratorController {
 	
 	
 	
+	
+	
     static function view() {
 		$Templater = new Templater();
 		$Superquery = new Superquery();
@@ -66,6 +68,7 @@ class GeneratorController {
 		}
 		
     }
+	
 	
 	
 	
