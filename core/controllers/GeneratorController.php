@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /*
 /@ Author: tropic.r@gmail.com
 /@ Special for UA ITlab 2016 

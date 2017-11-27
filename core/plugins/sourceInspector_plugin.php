@@ -17,7 +17,7 @@ class Inspector {
 	   if(preg_match("/^[a-z]+$/",$data,$matchesRes)) {
 		   $data = strip_tags($data);
            $data = htmlspecialchars($data);
-           $data = mysql_escape_string($data);
+           //$data = mysql_real_escape_string($data);
 	       return $data;
 	   }else{
 		   Redirect::url("404.html");

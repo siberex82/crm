@@ -1,12 +1,24 @@
-<div class="block">
+<div class="container-fluid">
+   <div class="row-fluid">
+       <div class="col-md-12">
+             <hr class="hr"/>
+             
+             <ul class="breadcrumb">
+              <li><a href="#">Уведомления</a> 
+              </li>
+              
+              <li><a href="#">Все уведомления</a> 
+              </li>
 
- </div>
-     
-        
-        {gallery,4,Название блока, Название поля, id32, категория админки}
-        
-        {gallery,20,Название блока, Название поля, id33, категория админки}
-        
-        {string,Название блока, Название поля, id34, категория админки}
-        
-        {slider,6,Название блока, Название поля,id34, категория админки}
+            </ul>
+            <hr class="hr"/>
+            <!--div class="well">
+                 dsfdsfdsf  dsafdsf
+            </div-->
+            
+
+            {systems_mail}
+          
+       </div>
+   </div>
+</div> 

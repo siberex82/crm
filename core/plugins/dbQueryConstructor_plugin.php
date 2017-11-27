@@ -37,31 +37,38 @@ class Superquery implements IntSuperquery {
    
    
    
+   function escaped($string) {
+       return mysqli_real_escape_string($this->linkDb,$string);
+   }//escape
+   
+   
+   
    
    
    function getCustom($table) {
 	   
-	   $this->data = mysqli_query($this->linkDb,$table) or die("query Error!");
+	   $this->data = mysqli_query($this->linkDb,$table) or die(mysqli_error($this->linkDb));
 	   
+	   if($this->data) {
+		   
 	   return $this;
 	   
+	   }
    }//end function getCustom
    
    
    
-   
-   
-   
+ 
    
    function getAssoc() {
 	   
-	   $this->data = mysqli_fetch_assoc($this->data);
+	   $data = mysqli_fetch_assoc($this->data);
 	   
 	   //$Connect->close();
 	   
-	   return $this->data;
+	   return $data;
 	   
-	   mysqli_free_result($this->data);
+	   //mysqli_free_result($this->data);
 	   
    }//end function getAssoc
    
@@ -73,9 +80,9 @@ class Superquery implements IntSuperquery {
    
    function getArray() {
 	   
-	  $this->data = mysqli_fetch_array($this->data);
+	  $data = mysqli_fetch_array($this->data);
 	  
-	  return $this->data;
+	  return $data;
 	   
    }//end function getArray
    
@@ -86,6 +93,7 @@ class Superquery implements IntSuperquery {
    
    
    function getTable() {
+
    }//end function getTable
    
    

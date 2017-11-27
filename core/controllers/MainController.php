@@ -11,6 +11,11 @@
 */
 
 class MainController {
+	static function _construct() {
+	  
+	  self::main();
+	}
+	
 	
 	static function main() {
 	    
@@ -18,10 +23,26 @@ class MainController {
 		$Superquery = new Superquery;
 		
 		
-	    $Templater->getContent("homepage")->replace()->view();
-
-		$Superquery->getCustom("SELECT * FROM fus_admins")->getArray();
+		include_once ROOT.SEPARATOR.'core/actions/MessagesAction.php';
+			
+	    $Templater->getContent("messages")->replace()->view();
+        
+	
+		//$Superquery->getCustom("SELECT * FROM fus_admins")->getArray();
 	   
+	}
+	
+	static function logout() {
+		$Templater = new Templater();
+		$Superquery = new Superquery;
+		
+		
+			
+	    $Templater->getContent("homepage")->replace()->view();
+        
+		unset($_SESSION['user']);
+		$_SESSION['user_auth'] = false;
+		Redirect::url("main/");
 	}
 	
 }//end class

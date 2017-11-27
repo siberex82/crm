@@ -1,6 +1,7 @@
 <?php
 session_start();
 ob_start();
+//$_SESSION['user_auth'] = false;
 /*
 /
 /@ Author: tropic.r@gmail.com
@@ -10,6 +11,7 @@ ob_start();
 */
 
 try {
+  
   $start = realpath(dirname(__DIR__))."/init/start.php";
   
   if(file_exists($start)) {
@@ -18,6 +20,7 @@ try {
     $initSystem->init();
   
     Catcher::send($_REQUEST);
+	
   
   } else {
 	throw new Exception("Fatal Error! {$start} not found");  

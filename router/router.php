@@ -33,19 +33,39 @@ class Router implements IntRouter {
 				 $class = $route."Controller";
 				 
 				 if(isset($_GET['act'])) {
-					 if($act = $Inspector->ClearString(trim($_GET['act']))) {
-
-						    $class::$act();
-						 
-					 }else{
-					    //Redirect::url("404.html");
-					 }//end if act valid
 					 
+					if($_SESSION['user_auth'] && $_SESSION['user_auth'] == true) {
+							 if($act = $Inspector->ClearString(trim($_GET['act']))) {
+								
+
+										$class::$act();
+								
+							 }else{
+								//Redirect::url("404.html");
+							 }//end if act valid
+					} else {
+					        if(file_exists(ROOT.SEPARATOR."core".SEPARATOR."controllers".SEPARATOR."SinginController.php")) { 
+		 
+				           require_once ROOT.SEPARATOR."core".SEPARATOR."controllers".SEPARATOR."SinginController.php";
+						 
+				          SinginController::_construct();
+		 
+			               }
+				   }//if($_SESSION['user_auth']
+				   
 				 }else {
-				  
+				     if( $_SESSION['user_auth'] && $_SESSION['user_auth'] == true ) {
 				  	     $class::_construct();
-						 	 
-				 }
+					 } else {
+					    if(file_exists(ROOT.SEPARATOR."core".SEPARATOR."controllers".SEPARATOR."SinginController.php")) { 
+		 
+				           require_once ROOT.SEPARATOR."core".SEPARATOR."controllers".SEPARATOR."SinginController.php";
+						 
+				          SinginController::_construct();
+		 
+			               }
+					 }
+				 }//if(isset($_GET['act']
 				 
 			  }else {
 				 
@@ -60,15 +80,30 @@ class Router implements IntRouter {
 	  
 	  } else {
 		 
-		 if(file_exists(ROOT.SEPARATOR."core".SEPARATOR."controllers".SEPARATOR."MainController.php")) { 
+		 if(!$_SESSION['user_auth'] || empty($_SESSION['user_auth']) || $_SESSION['user_auth'] == false ) {
+		
+		     if(file_exists(ROOT.SEPARATOR."core".SEPARATOR."controllers".SEPARATOR."SinginController.php")) { 
 		 
-			 require_once ROOT.SEPARATOR."core".SEPARATOR."controllers".SEPARATOR."MainController.php";
-					 
-			 MainController::main();
+				 require_once ROOT.SEPARATOR."core".SEPARATOR."controllers".SEPARATOR."SinginController.php";
+						 
+				 SinginController::_construct();
 		 
-		 } else {
+			 } else {
+			 
+			 }//end file exists
+		 }// !$_SESSION['user_auth']
 		 
-		 }//end file exists
+		 if($_SESSION['user_auth'] && $_SESSION['user_auth'] == true ) {
+			 if(file_exists(ROOT.SEPARATOR."core".SEPARATOR."controllers".SEPARATOR."MainController.php")) { 
+			 
+				 require_once ROOT.SEPARATOR."core".SEPARATOR."controllers".SEPARATOR."MainController.php";
+						 
+				 MainController::main();
+			 
+			 } else {
+			 
+			 }//end file exists
+		 }// $_SESSION['user_auth']
 	  }
 	  
    }

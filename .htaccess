@@ -33,6 +33,6 @@ RewriteRule ^([a-zA-Z0-9_\-]+)/([a-zA-Z0-9_\-]+)/$ ?route=$1&act=$2 [L,QSA]
 
 
 RewriteRule ^([a-zA-Z0-9_\-]+)/([a-zA-Z0-9_\-]+)$ /$1/$2/$3 [R,L]
-RewriteRule ^([a-zA-Z0-9_\-]+)/([a-zA-Z0-9_\-]+)/([a-zA-Z0-9_\-]+)/$ ?route=$1&act=$2&post=$3 [L,QSA]
+RewriteRule ^([a-zA-Z0-9_\-]+)/([a-zA-Z0-9_\-]+)/([a-zA-Z0-9_\-]+)/$ ?route=$1&act=$2&id=$3 [L,QSA]
 
 

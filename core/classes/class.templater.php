@@ -14,6 +14,7 @@ class Templater implements IntTemplater {
     
 	public $template = "main";
 	public $content;
+	public $token;
 	
 	
 	
@@ -48,8 +49,9 @@ class Templater implements IntTemplater {
 	   $this->content = str_replace("js/",  HOST.SEPARATOR."core".SEPARATOR."templates/js/",$this->content);
 	   
 	   $this->content = str_replace("fonts/",  HOST.SEPARATOR."core".SEPARATOR."templates/fonts/",$this->content);
+	  
 	   
-	   $this->content = str_replace("{message}",  $_SESSION['error_message'],$this->content);
+	   $this->content = str_replace("{message}",  "",$this->content);
 	   
 	   
 	   preg_match_all("|{(.*)}|", $this->content, $out, PREG_PATTERN_ORDER);
@@ -89,11 +91,19 @@ class Templater implements IntTemplater {
 		
 		$this->content = $MainGetContent = file_get_contents($MainGetContent);
 		
+		
 		if(file_exists($PathGetContent)) {
 		
-		  $PathGetContent = file_get_contents($PathGetContent);
+		$PathGetContent = file_get_contents($PathGetContent);
 		  
-		  $this->content = str_replace("{content}", $PathGetContent, $MainGetContent);
+		  
+		  
+		$this->content = str_replace("{content}", $PathGetContent, $MainGetContent);
+		  
+	  
+	   
+	   $this->content = str_replace("{message}",  $_SESSION['error_message'],$this->content);
+	   
 		
 		} else {
 		  throw new Exception("Template {$template} not found!");	
@@ -129,7 +139,7 @@ class Templater implements IntTemplater {
 	
 	function replace() {
 	   
-	   $this->content = str_replace("{title}","FUSION",$this->content);
+	   $this->content = str_replace("{title}","CRM",$this->content);
 	   
 	   $this->content = str_replace("/css/", HOST.SEPARATOR."app".SEPARATOR."includes/css/",$this->content);
 	   
@@ -139,8 +149,119 @@ class Templater implements IntTemplater {
 	   
 	   $this->content = str_replace("/fonts/",  HOST.SEPARATOR."app".SEPARATOR."includes/fonts/",$this->content);
 	   
+	   $this->content = str_replace("/plugins/",  HOST.SEPARATOR."app".SEPARATOR."includes/plugins/",$this->content);
+	   
+	   $this->content = str_replace("{token}", $this->token = $_SESSION['token'],  $this->content);
+	   
+	   $this->content = str_replace("{HOST}", HOST,  $this->content);
+	   
+	   $this->content = str_replace("{username}", $_SESSION['user']['name'],  $this->content);
+	   
+	   
+	   //count points for left menu
+	  
+	   if($_SESSION['user_auth'] == true) {   
+	   $this->content = str_replace("{menu_count_user}", MainAction::menuCountUser(),  $this->content);
+	   $this->content = str_replace("{menu_count_resolution}", MainAction::menuCountResolution(),  $this->content);
+	   $this->content = str_replace("{menu_count_allapplications}", MainAction::menuCountAllApplications(),  $this->content);
+	   $this->content = str_replace("{menu_count_finish_applications}", MainAction::menuCountFinishApplications(),  $this->content);
+	   $this->content = str_replace("{menu_count_offtime_applications}", MainAction::menuCountOffTimeApplications(),  $this->content);
+	   $this->content = str_replace("{menu_count_control_applications}", MainAction::menuCountControlApplications(),  $this->content);
+	   $this->content = str_replace("{menu_count_execute_applications}", MainAction::menuCountExecuteApplications(),  $this->content);
+	   $this->content = str_replace("{menu_count_ipuzzle_applications}", MainAction::menuCountIpuzzleApplications(),  $this->content);
+	   $this->content = str_replace("{menu_count_message}", MainAction::menuCountMessage(),  $this->content);
+	   
+	   
+	   }
+	   
+	   
+	   
+	   if($_GET['act'] == "userview") {
+	   $this->content = str_replace("{usercontrol_userview}", UsercontrolAction::view(),  $this->content);
+	   }
+	   
+	   
+	   if($_GET['act'] == "useredit") {
+	   $this->content = str_replace("{usercontrol_edit}", UsercontrolAction::edit(),  $this->content);
+	   }
+	   
+	   
+	   if($_GET['route'] == "applications" && $_GET['act'] == "add") {
+	   $this->content = str_replace("{select_userlist}", ApplicationsAction::selectUserlist(),  $this->content);
+	   $this->content = str_replace("{this_user}", $_SESSION['user']['id'],  $this->content);
+	   }
+	   
+	   
+	   if($_GET['route'] == "applications" && $_GET['act'] == "worknow") {
+	   $this->content = str_replace("{application}", ApplicationsAction::worknow(),  $this->content);
+	   }
+	   
+	   if($_GET['route'] == "applications" && $_GET['act'] == "finished") {
+	   $this->content = str_replace("{application}", ApplicationsAction::finished(),  $this->content);
+	   }
+	   
+	   if($_GET['route'] == "applications" && $_GET['act'] == "offtimes") {
+	   $this->content = str_replace("{application}", ApplicationsAction::offtimes(),  $this->content);
+	   }
+	   
+	   if($_GET['route'] == "applications" && $_GET['act'] == "control") {
+	   $this->content = str_replace("{application}", ApplicationsAction::control(),  $this->content);
+	   }
+	   
+	   if($_GET['route'] == "applications" && $_GET['act'] == "execute") {
+	   $this->content = str_replace("{application}", ApplicationsAction::execute(),  $this->content);
+	   }
+	   
+	   if($_GET['route'] == "applications" && $_GET['act'] == "ipuzzle") {
+	   $this->content = str_replace("{application}", ApplicationsAction::ipuzzle(),  $this->content);
+	   }
+	   
+	   if($_GET['route'] == "applications" && $_GET['act'] == "resolution") {
+	   $this->content = str_replace("{application}", ApplicationsAction::resolution(),  $this->content);
+	   }
+	   
+	   
+	   if($_GET['route'] == "applications" && $_GET['act'] == "fullview") {
+	   $this->content = str_replace("{application}", ApplicationsAction::fullview(),  $this->content);
+	   }
+	   
+	   
+	   if($_GET['route'] == "applications" && $_GET['act'] == "edit") {
+	   $this->content = str_replace("{application}", ApplicationsAction::edit(),  $this->content);
+	   }
+	   
+	   
+	   
+	   if($_GET['route'] == "messages") {
+	   $this->content = str_replace("{systems_mail}", MessagesAction::_construct(),  $this->content);
+	   }
+	   
+	   
+	   
+	   if(isset($_GET['message'])) {
+	   $this->content = str_replace("{alert}", "<br/>".$_GET['message']."<br/><br/>",  $this->content);
+	   } else {
+	   $this->content = str_replace("{alert}", "",  $this->content);   
+		   }
+	   
+	   
+	   
+	   
 	   preg_match_all("|{(.*)}|", $this->content, $out, PREG_PATTERN_ORDER);
-
+	   if(!$_SESSION['user_auth'] || empty($_SESSION['user_auth']) || $_SESSION['user_auth'] == false ) {
+	       preg_match_all("#{hide-nologin}(.*?){/hide-nologin}#is", $this->content, $hideNoLoginOut, PREG_PATTERN_ORDER);
+		   
+		   
+	   
+		   foreach($hideNoLoginOut as $key=>$matches) {
+		   $this->content = str_replace($matches,"", $this->content);
+		   }
+	   }//end if(!$_SESSION['user_auth']
+	   
+	   
+	   
+	   
+	   
 	   
 	   foreach($out[1] as $key=>$mask){
 	
